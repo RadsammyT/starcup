@@ -12,10 +12,6 @@ public sealed partial class ScreenVisionComponent : Component
     ///     Should the shader have damage effects?
     /// </summary>
     [DataField] public bool DamageEffects = false;
-    /// <summary>
-    ///     If the entity is incapacitated (Crit or dead), intensify effects by this amount.
-    /// </summary>
-    [DataField] public float IncapacitatedMultiplier = 3;
 
     //Below are parameters for the shader.
 

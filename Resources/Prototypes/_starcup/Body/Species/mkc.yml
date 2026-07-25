@@ -100,8 +100,8 @@
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
-        - ReagentId: Oil
-          Quantity: 300
+      - ReagentId: Oil
+        Quantity: 300
     bloodRefreshAmount: 0
   - type: Barotrauma
     damage:
@@ -151,6 +151,7 @@
     emote: Buzz-Two
   - type: Uncloneable
   - type: ScreenVision
+    damageEffects: true
 
 - type: entity
   parent: OrganBase
