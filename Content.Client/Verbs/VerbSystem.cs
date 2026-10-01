@@ -76,7 +76,6 @@ namespace Content.Client.Verbs
 
             // If FOV drawing is disabled, we will modify the visibility option to ignore visiblity checks.
             var visibility = _eyeManager.CurrentEye.DrawFov ? Visibility : Visibility | MenuVisibility.NoFov;
-
             var ev = new MenuVisibilityEvent
             {
                 TargetPos = targetPos,

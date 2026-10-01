@@ -1,0 +1,30 @@
+<photo:PalaroidWindow xmlns="https://spacestation14.io"
+    xmlns:photo="clr-namespace:Content.Client.Photography.UI"
+    MouseFilter="Stop" Resizable="False">
+
+    <PanelContainer Name="PolaroidBackground">
+        <BoxContainer Orientation="Vertical" Margin="15 15 15 30">
+
+            <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextureButton Name="CloseButton" StyleClasses="windowCloseButton" Margin="0 -5 -5 5"/>
+            </BoxContainer>
+
+            <TextureRect Name="PolaroidImage" HorizontalAlignment="Center" MinSize="288 288" Stretch="KeepAspectCentered"/>
+
+            <Control MinSize="0 15" />
+
+            <RichTextLabel Name="WrittenTextLabel" StyleClasses="PaperWrittenText" HorizontalAlignment="Center" MaxWidth="288"/>
+
+            <BoxContainer Name="InputContainer" Orientation="Vertical" MaxWidth="288" HorizontalAlignment="Center">
+                <TextEdit Name="Input" StyleClasses="PaperLineEdit" MinHeight="40" Access="Public" />
+
+                <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">
+                    <Label Name="FillStatus" StyleClasses="LabelSecondaryColor" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                    <Button Name="SaveButton" />
+                </BoxContainer>
+            </BoxContainer>
+
+        </BoxContainer>
+    </PanelContainer>
+
+</photo:PalaroidWindow>

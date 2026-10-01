@@ -115,7 +115,7 @@ public abstract partial class SharedFlashSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnRangedInteract(Entity<FlashComponent> ent, ref BeforeRangedInteractEvent args)
     {
-        if (!ent.Comp.FlashOnRangedInteract || args.Handled || !TryUseFlashItem(ent.AsNullable(), args.User))
+        if (!ent.Comp.FlashOnRangedInteract || args.Handled || !TryUseFlashItem(ent.AsNullable(), args.User) || ent.Comp.Range <= 0)
             return;
 
         args.Handled = true;
