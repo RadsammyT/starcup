@@ -23,6 +23,7 @@ public sealed class PhotographySystem : EntitySystem
     [Dependency] private ILocalizationManager _loc = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private PopupSystem _popupSystem = default!;
@@ -39,6 +40,7 @@ public sealed class PhotographySystem : EntitySystem
         SubscribeLocalEvent<PhotographComponent, BoundUIOpenedEvent>(OnUIOpened);
         SubscribeLocalEvent<CameraComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<PhotographComponent, InteractUsingEvent>(OnInteractUsing);
+        SubscribeLocalEvent<PhotographComponent, PaperComponent.PaperInputTextMessage>(OnInputTextMessage);
     }
     private void OnExamine(EntityUid uid, CameraComponent comp, ExaminedEvent args)
     {
@@ -170,6 +172,14 @@ public sealed class PhotographySystem : EntitySystem
             }
             args.Handled = true;
         }
+    }
+    private void OnInputTextMessage(Entity<PhotographComponent> entity, ref PaperComponent.PaperInputTextMessage args)
+    {
+        if (!TryComp<PaperComponent>(entity.Owner, out var paper))
+            return;
+        paper.Mode = PaperComponent.PaperAction.Read;
+        UpdateUserInterface(entity, entity.Comp);
+        Dirty(entity);
     }
 }
 
