@@ -25,7 +25,7 @@ public sealed partial class CameraComponent : Component
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
     public TimeSpan NextPhotoTime = TimeSpan.Zero;
 
-    // <summary>
+    /// <summary>
     /// The sound made when printing occurs
     /// </summary>
     [DataField]

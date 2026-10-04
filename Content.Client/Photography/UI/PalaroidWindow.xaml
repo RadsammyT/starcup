@@ -15,7 +15,7 @@
 
             <RichTextLabel Name="WrittenTextLabel" StyleClasses="PaperWrittenText" HorizontalAlignment="Center" MaxWidth="288"/>
 
-            <BoxContainer Name="InputContainer" Orientation="Vertical" MaxWidth="288" HorizontalAlignment="Center">
+            <BoxContainer Name="InputContainer" StyleIdentifier="PaperContainer" Orientation="Vertical" MaxWidth="288" HorizontalAlignment="Center">
                 <TextEdit Name="Input" StyleClasses="PaperLineEdit" MinHeight="40" Access="Public" />
 
                 <BoxContainer Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 5 0 0">

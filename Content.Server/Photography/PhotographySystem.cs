@@ -1,11 +1,15 @@
 using Content.Server.Administration.Logs;
+using Content.Server.Popups;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Interaction;
 using Content.Shared.Paper;
 using Content.Shared.Photography;
+using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Photography;
@@ -21,6 +25,11 @@ public sealed class PhotographySystem : EntitySystem
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private PopupSystem _popupSystem = default!;
+    [Dependency] private TagSystem _tagSystem = default!;
+
+    private static readonly ProtoId<TagPrototype> WriteIgnoreStampsTag = "WriteIgnoreStamps";
+    private static readonly ProtoId<TagPrototype> WriteTag = "Write";
 
 
     public override void Initialize()
@@ -29,6 +38,7 @@ public sealed class PhotographySystem : EntitySystem
         SubscribeNetworkEvent<CameraPhotoCapturedEvent>(OnPhotoCaptured);
         SubscribeLocalEvent<PhotographComponent, BoundUIOpenedEvent>(OnUIOpened);
         SubscribeLocalEvent<CameraComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<PhotographComponent, InteractUsingEvent>(OnInteractUsing);
     }
     private void OnExamine(EntityUid uid, CameraComponent comp, ExaminedEvent args)
     {
@@ -118,4 +128,48 @@ public sealed class PhotographySystem : EntitySystem
 
         _uiSystem.SetUiState(uid, PolaroidUiKey.Key, state);
     }
+    private void OnInteractUsing(Entity<PhotographComponent> entity, ref InteractUsingEvent args)
+    {
+        if (!TryComp<PaperComponent>(entity.Owner, out var paper))
+            return;
+        // only allow editing if there are no stamps or when using a cyberpen
+        var editable = paper.StampedBy.Count == 0 || _tagSystem.HasTag(args.Used, WriteIgnoreStampsTag);
+        if (_tagSystem.HasTag(args.Used, WriteTag))
+        {
+            if (editable)
+            {
+                if (paper.EditingDisabled)
+                {
+                    var paperEditingDisabledMessage = Loc.GetString("paper-tamper-proof-modified-message");
+                    _popupSystem.PopupEntity(paperEditingDisabledMessage, entity, args.User);
+
+                    args.Handled = true;
+                    return;
+                }
+
+                var ev = new PaperWriteAttemptEvent(entity.Owner);
+                RaiseLocalEvent(args.User, ref ev);
+                if (ev.Cancelled)
+                {
+                    if (ev.FailReason is not null)
+                    {
+                        var fileWriteMessage = Loc.GetString(ev.FailReason);
+                        _popupSystem.PopupEntity(fileWriteMessage, entity.Owner, args.User);
+                    }
+
+                    args.Handled = true;
+                    return;
+                }
+
+                var writeEvent = new PaperWriteEvent(args.User, entity);
+                RaiseLocalEvent(args.Used, ref writeEvent);
+
+                paper.Mode = PaperComponent.PaperAction.Write;
+                _uiSystem.OpenUi(entity.Owner, PolaroidUiKey.Key, args.User);
+                UpdateUserInterface(entity.Owner, entity.Comp);
+            }
+            args.Handled = true;
+        }
+    }
 }
+
