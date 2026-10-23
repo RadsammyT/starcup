@@ -5,6 +5,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.InteractionVerbs;
 using Robust.Shared.Serialization;
 
@@ -30,6 +32,6 @@ public sealed partial class ModifyHealthAction : InteractionAction
     public override bool Perform(InteractionArgs args, InteractionVerbPrototype proto, VerbDependencies deps)
     {
         return deps.EntMan.System<DamageableSystem>()
-            .TryChangeDamage(args.Target, Damage, IgnoreResistance, origin: args.User) is not null;
+            .TryChangeDamage(args.Target, Damage, IgnoreResistance, origin: args.User);
     }
 }
