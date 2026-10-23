@@ -7,6 +7,7 @@
 using Content.Shared.Bed.Sleep;
 using Content.Shared.InteractionVerbs;
 using Content.Shared.Standing;
+using Content.Shared.Stunnable;
 
 namespace Content.Server.InteractionVerbs.Actions;
 
@@ -38,9 +39,15 @@ public sealed partial class ChangeStandingStateAction : InteractionAction
 
         // Note: these will get cancelled if the target is forced to stand/lay, e.g. due to a buckle or stun or something else.
         if (state.Standing == false && MakeStanding)
-            return stateSystem.Stand(args.Target);
-        else if (state.Standing == true && MakeLaying)
-            return stateSystem.Down(args.Target);
+        {
+            return
+                deps.EntMan.System<SharedStunSystem>().TryStanding(args.Target);
+        }
+        if (state.Standing == true && MakeLaying)
+        {
+            return
+            deps.EntMan.System<SharedStunSystem>().TryKnockdown(args.Target, null, false, false, false, true);
+        }
 
         return false;
     }
