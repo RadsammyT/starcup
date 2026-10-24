@@ -4,11 +4,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._EinsteinEngines.InteractionVerbs;
-using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Robust.Shared.Random;
 
-namespace Content.Server._EinsteinEngines.InteractionVerbs.Actions;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Actions;
 
 /// <summary>
 ///     An action that does nothing on its own, made just to mimic the old "chance to show a popup" interactions.
