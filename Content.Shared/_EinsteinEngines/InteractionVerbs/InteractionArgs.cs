@@ -5,11 +5,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Hands.Components;
 using Content.Shared.Verbs;
-using Robust.Shared.Serialization;
 
-namespace Content.Shared.InteractionVerbs;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs;
 
 public sealed partial class InteractionArgs
 {

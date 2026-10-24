@@ -7,10 +7,9 @@
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
-using Content.Shared.InteractionVerbs;
-using Robust.Shared.Serialization;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 
-namespace Content.Server.InteractionVerbs.Actions;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Actions;
 
 [Serializable]
 public sealed partial class ModifyHealthAction : InteractionAction

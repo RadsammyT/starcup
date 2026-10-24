@@ -5,9 +5,10 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.InteractionVerbs.Requirements;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Requirements;
 
 /// <summary>
 ///     A requirement that combines multiple other requirements.

@@ -4,12 +4,13 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat;
-using Content.Shared.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Robust.Shared.Serialization;
 
-namespace Content.Server.InteractionVerbs.Actions;
+namespace Content.Server._EinsteinEngines.InteractionVerbs.Actions;
 
 /// <summary>
 ///     Makes the target or the user to send a chat message. <br/><br/>

@@ -4,10 +4,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.InteractionVerbs;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs;
 
 /// <summary>
 ///     Specifies which verbs this entity may perform on its own, on any entity that the verb allows.

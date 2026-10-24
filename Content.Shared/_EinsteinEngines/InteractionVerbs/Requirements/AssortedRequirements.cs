@@ -4,6 +4,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -12,7 +13,7 @@ using Content.Shared.Stunnable;
 using Content.Shared.Whitelist;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.InteractionVerbs.Requirements;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Requirements;
 
 /// <summary>
 ///     Requires the target to meet a certain whitelist and not meet a blacklist.

@@ -5,10 +5,11 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Shared.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Robust.Shared.Serialization;
 
-namespace Content.Server.InteractionVerbs.Actions;
+namespace Content.Server._EinsteinEngines.InteractionVerbs.Actions;
 
 /// <summary>
 ///     An action that combines multiple other actions.

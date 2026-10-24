@@ -4,11 +4,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 
-namespace Content.Client.InteractionVerbs;
+namespace Content.Client._EinsteinEngines.InteractionVerbs;
 
 // Just here because the shared system is abstract.
-public sealed class InteractionVerbsSystem : SharedInteractionVerbsSystem
+public sealed class InteractionVerbsSystem : Shared._EinsteinEngines.InteractionVerbs.SharedInteractionVerbsSystem
 {
 }

@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.DoAfter;
-using Content.Shared.InteractionVerbs.Events;
+using Content.Shared._EinsteinEngines.InteractionVerbs.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
@@ -13,7 +13,7 @@ using Robust.Shared.Utility;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 
-namespace Content.Shared.InteractionVerbs;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs;
 
 /// <summary>
 ///     Represents an action that can be performed on an entity.
@@ -125,7 +125,7 @@ public sealed partial class InteractionVerbPrototype : IPrototype, IInheritingPr
         BreakOnWeightlessMove = true,
         RequireCanInteract = false,
         // Never used, but must be present because the field is non-nullable and will error during serialization if not set.
-        Event = new InteractionVerbDoAfterEvent(default, default!)
+        Event = new _EinsteinEngines.InteractionVerbs.Events.InteractionVerbDoAfterEvent(default, default!)
     };
 
     [DataField]
@@ -210,7 +210,7 @@ public sealed partial class InteractionVerbPrototype : IPrototype, IInheritingPr
         ///     The interaction popup to show, at <see cref="EffectLocation"/>. If null, no popup will be shown.
         /// </summary>
         [DataField]
-        public ProtoId<InteractionPopupPrototype>? Popup = null;
+        public ProtoId<_EinsteinEngines.InteractionVerbs.InteractionPopupPrototype>? Popup = null;
 
         /// <summary>
         ///     Sound played when the effect is shown, at <see cref="EffectLocation"/>. If null, no sound will be played.

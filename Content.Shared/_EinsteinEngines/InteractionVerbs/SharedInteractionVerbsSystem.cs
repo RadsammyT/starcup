@@ -1,28 +1,25 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared.ActionBlocker;
 using Content.Shared.DoAfter;
-using Content.Shared.Ghost;
 using Content.Shared.Ghost.Components;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Interaction;
-using Content.Shared.InteractionVerbs.Events;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs.Events;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using static Content.Shared.InteractionVerbs.InteractionPopupPrototype.Prefix;
-using static Content.Shared.InteractionVerbs.InteractionVerbPrototype.ContestType;
-using static Content.Shared.InteractionVerbs.InteractionVerbPrototype.EffectTargetSpecifier;
+using static Content.Shared._EinsteinEngines.InteractionVerbs.InteractionPopupPrototype.Prefix;
+using static Content.Shared._EinsteinEngines.InteractionVerbs.InteractionVerbPrototype.ContestType;
+using static Content.Shared._EinsteinEngines.InteractionVerbs.InteractionVerbPrototype.EffectTargetSpecifier;
 
-namespace Content.Shared.InteractionVerbs;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs;
 
-public abstract class SharedInteractionVerbsSystem : EntitySystem
+public abstract partial class SharedInteractionVerbsSystem : EntitySystem
 {
     private readonly InteractionAction.VerbDependencies _verbDependencies = new();
     private List<InteractionVerbPrototype> _globalPrototypes = default!;
@@ -43,7 +40,7 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
 
         SubscribeLocalEvent<InteractionVerbsComponent, GetVerbsEvent<InteractionVerb>>(OnGetOthersVerbs);
         SubscribeLocalEvent<OwnInteractionVerbsComponent, GetVerbsEvent<InnateVerb>>(OnGetOwnVerbs);
-        SubscribeLocalEvent<InteractionVerbDoAfterEvent>(OnDoAfterFinished);
+        SubscribeLocalEvent<Events.InteractionVerbDoAfterEvent>(OnDoAfterFinished);
     }
 
     private void LoadGlobalVerbs()
@@ -80,7 +77,7 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
         AddAll(allVerbs.Select(_protoMan.Index).Union(_globalPrototypes), args, () => new InnateVerb());
     }
 
-    private void OnDoAfterFinished(InteractionVerbDoAfterEvent ev)
+    private void OnDoAfterFinished(Events.InteractionVerbDoAfterEvent ev)
     {
         if (ev.Cancelled || ev.Handled || !_protoMan.TryIndex(ev.VerbPrototype, out var proto))
             return;
@@ -155,7 +152,7 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
             NeedHand = proto.RequiresHands,
             RequireCanInteract = proto.RequiresCanAccess,
             Delay = delay,
-            Event = new InteractionVerbDoAfterEvent(proto.ID, args)
+            Event = new Events.InteractionVerbDoAfterEvent(proto.ID, args)
         };
 
         var isSuccess = _doAfters.TryStartDoAfter(doAfter);
@@ -351,7 +348,7 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
         }
     }
 
-    private void CreateVerbEffects(InteractionVerbPrototype.EffectSpecifier? specifier, InteractionPopupPrototype.Prefix prefix, InteractionVerbPrototype proto, InteractionArgs args)
+    private void CreateVerbEffects(InteractionVerbPrototype.EffectSpecifier? specifier, _EinsteinEngines.InteractionVerbs.InteractionPopupPrototype.Prefix prefix, InteractionVerbPrototype proto, InteractionArgs args)
     {
         // Not doing effects on client because it causes issues
         if (specifier is null || _net.IsClient)
@@ -406,7 +403,7 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
         }
     }
 
-    private void PopupEffects(string message, EntityUid target, Filter filter, bool recordReplay, InteractionPopupPrototype popup, bool clip = false)
+    private void PopupEffects(string message, EntityUid target, Filter filter, bool recordReplay, _EinsteinEngines.InteractionVerbs.InteractionPopupPrototype popup, bool clip = false)
     {
         // Sending a chat message will result in a popup anyway
         // TODO this needs to be fixed probably. Popups and chat messages should be independent.
@@ -416,7 +413,7 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
             _popups.PopupEntity(message, target, filter, recordReplay, popup.PopupType);
     }
 
-    protected virtual void SendChatLog(string message, EntityUid source, Filter filter, InteractionPopupPrototype popup, bool clip)
+    protected virtual void SendChatLog(string message, EntityUid source, Filter filter, _EinsteinEngines.InteractionVerbs.InteractionPopupPrototype popup, bool clip)
     {
     }
 

@@ -4,6 +4,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -11,7 +12,7 @@ using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Timing;
 
-namespace Content.Shared.InteractionVerbs;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs;
 
 /// <summary>
 ///     Represents an action performed when a verb is used successfully.

@@ -7,14 +7,14 @@
 using System.Linq;
 using Content.Server.Chat.Managers;
 using Content.Shared.Interaction;
-using Content.Shared.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Robust.Shared.Player;
 
-namespace Content.Server.InteractionVerbs;
+namespace Content.Server._EinsteinEngines.InteractionVerbs;
 
-public sealed class InteractionVerbsSystem : SharedInteractionVerbsSystem
+public sealed class InteractionVerbsSystem : Shared._EinsteinEngines.InteractionVerbs.SharedInteractionVerbsSystem
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly SharedInteractionSystem _interactions = default!;
@@ -27,7 +27,7 @@ public sealed class InteractionVerbsSystem : SharedInteractionVerbsSystem
         _occluderQuery = GetEntityQuery<OccluderComponent>();
     }
 
-    protected override void SendChatLog(string message, EntityUid source, Filter filter, InteractionPopupPrototype popup, bool clip)
+    protected override void SendChatLog(string message, EntityUid source, Filter filter, Shared._EinsteinEngines.InteractionVerbs.InteractionPopupPrototype popup, bool clip)
     {
         if (filter.Count <= 0)
             return;

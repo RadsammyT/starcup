@@ -4,11 +4,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared.Verbs;
 using JetBrains.Annotations;
 using Robust.Shared.Serialization;
 
-namespace Content.Shared.InteractionVerbs;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs;
 
 /// <summary>
 ///     Defines a requirement for an <see cref="InteractionVerb"/>.

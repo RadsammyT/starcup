@@ -4,9 +4,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 
-namespace Content.Server.InteractionVerbs.Actions;
+namespace Content.Server._EinsteinEngines.InteractionVerbs.Actions;
 
 /// <summary>
 ///     An action that raises an event on the target or the user. Made for interop with systems that rely on events.

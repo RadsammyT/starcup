@@ -6,7 +6,7 @@
 
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.InteractionVerbs.Events;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Events;
 
 /// <summary>
 ///     Raised directly on the user entity to get more interaction verbs it may allow.

@@ -4,7 +4,9 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-namespace Content.Shared.InteractionVerbs.Events;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
+
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Events;
 
 /// <summary>
 ///     Raised directly on the performer of the interaction verb and on its target to determine if it should be allowed.
