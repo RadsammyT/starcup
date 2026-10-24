@@ -4,10 +4,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._EinsteinEngines.InteractionVerbs;
-using Content.Shared._EinsteinEngines.InteractionVerbs;
-
-namespace Content.Server._EinsteinEngines.InteractionVerbs.Actions;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Actions;
 
 /// <summary>
 ///     A special proxy action that swaps the target and the user for the proxied action.

@@ -4,12 +4,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared.Bed.Sleep;
-using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared.Mobs.Components;
 
-namespace Content.Server._EinsteinEngines.InteractionVerbs.Actions;
+namespace Content.Shared._EinsteinEngines.InteractionVerbs.Actions;
 
 [Serializable]
 public sealed partial class ToggleSleepingAction : InteractionAction
