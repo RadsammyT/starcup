@@ -14,10 +14,10 @@ using Robust.Shared.Player;
 
 namespace Content.Server._EinsteinEngines.InteractionVerbs;
 
-public sealed class InteractionVerbsSystem : Shared._EinsteinEngines.InteractionVerbs.SharedInteractionVerbsSystem
+public sealed partial class InteractionVerbsSystem : Shared._EinsteinEngines.InteractionVerbs.SharedInteractionVerbsSystem
 {
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactions = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private SharedInteractionSystem _interactions = default!;
 
     private EntityQuery<OccluderComponent> _occluderQuery;
 
