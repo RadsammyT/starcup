@@ -4,7 +4,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-namespace Content.Shared._EinsteinEngines.InteractionVerbs.Actions;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
+using Robust.Shared.Serialization;
+
+namespace Content.Server._EinsteinEngines.InteractionVerbs.Actions;
 
 /// <summary>
 ///     An action that performs one of the two (or just one) actions based on a condition.

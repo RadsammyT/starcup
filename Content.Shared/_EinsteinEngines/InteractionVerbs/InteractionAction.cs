@@ -56,7 +56,7 @@ public abstract partial class InteractionAction
     /// <remarks>
     ///     To acquire a working instance of this class, allocate a new instance and use IoCManager.InjectDependencies().
     /// </remarks>
-    public sealed partial class VerbDependencies
+    public sealed class VerbDependencies
     {
         [Dependency] public IEntityManager EntMan = default!;
         [Dependency] public IPrototypeManager ProtoMan = default!;

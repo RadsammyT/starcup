@@ -5,6 +5,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.DoAfter;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 

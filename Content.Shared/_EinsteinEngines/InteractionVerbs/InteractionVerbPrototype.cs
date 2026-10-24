@@ -18,7 +18,7 @@ namespace Content.Shared._EinsteinEngines.InteractionVerbs;
 /// <summary>
 ///     Represents an action that can be performed on an entity.
 /// </summary>
-[Prototype("Interaction")]
+[Prototype("Interaction"), Serializable]
 public sealed partial class InteractionVerbPrototype : IPrototype, IInheritingPrototype
 {
     /// <inheritdoc />
@@ -201,7 +201,7 @@ public sealed partial class InteractionVerbPrototype : IPrototype, IInheritingPr
     }
 
     [DataDefinition, Serializable]
-    public abstract partial class EffectSpecifier
+    public partial class EffectSpecifier
     {
         [DataField]
         public EffectTargetSpecifier EffectTarget = EffectTargetSpecifier.TargetThenUser;

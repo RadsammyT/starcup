@@ -3,6 +3,7 @@ using System.Linq;
 using Content.Shared.DoAfter;
 using Content.Shared.Ghost.Components;
 using Content.Shared.IdentityManagement;
+using Content.Shared._EinsteinEngines.InteractionVerbs;
 using Content.Shared._EinsteinEngines.InteractionVerbs.Events;
 using Content.Shared.Popups;
 using Content.Shared.Verbs;
