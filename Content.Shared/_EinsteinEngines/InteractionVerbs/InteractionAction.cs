@@ -57,11 +57,11 @@ public abstract partial class InteractionAction
     /// </remarks>
     public sealed class VerbDependencies
     {
-        [Dependency] public readonly IEntityManager EntMan = default!;
-        [Dependency] public readonly IPrototypeManager ProtoMan = default!;
-        [Dependency] public readonly IRobustRandom Random = default!;
-        [Dependency] public readonly IGameTiming Timing = default!;
-        [Dependency] public readonly ISerializationManager Serialization = default!;
-        [Dependency] public readonly EntityWhitelistSystem WhitelistSystem = default!;
+        [Dependency] public IEntityManager EntMan = default!;
+        [Dependency] public IPrototypeManager ProtoMan = default!;
+        [Dependency] public IRobustRandom Random = default!;
+        [Dependency] public IGameTiming Timing = default!;
+        [Dependency] public ISerializationManager Serialization = default!;
+        [Dependency] public EntityWhitelistSystem WhitelistSystem = default!;
     }
 }

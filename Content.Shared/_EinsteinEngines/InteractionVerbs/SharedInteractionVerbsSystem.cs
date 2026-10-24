@@ -27,15 +27,12 @@ public abstract class SharedInteractionVerbsSystem : EntitySystem
     private readonly InteractionAction.VerbDependencies _verbDependencies = new();
     private List<InteractionVerbPrototype> _globalPrototypes = default!;
 
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfters = default!;
-    [Dependency] private readonly SharedContainerSystem _containers = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactions = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedPopupSystem _popups = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfters = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedPopupSystem _popups = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {
